@@ -70,7 +70,7 @@ let titles = document.querySelectorAll('.title');
 console.log(titles);
 titles[0].textContent = 'Hello';
 
-let odd = document.querySelectorAll('li:nth-child(odd)';
+let odd = document.querySelectorAll('li:nth-child(odd)');
 for (let i = 0; i < odd.length; i++) {
   odd[i].style.backgroundColor = 'F4F4F4';
 }
@@ -78,4 +78,72 @@ for (let i = 0; i < odd.length; i++) {
 let even = document.querySelectorAll('li:nth-child(even)');
 for (let i = 0; i < even.length; i++) {
   even[i].style.backgroundColor = 'F4F4F4';
+}
+
+
+// TRAVERSING THE DOM
+let itemList = document.querySelector('#items');
+// parentNode property
+console.log(itemList.parentNode);
+itemList.parentNode.style.backgroundColor = '#F4F4F4';
+console.log(itemList.parentNode.parentNode.parentNode);
+
+// parentElement
+console.log(itemList.parentElement);
+
+// childNodes
+console.log(itemList.childNodes);
+
+// children
+console.log(itemList.children);
+
+// firstChild; somewhat useless
+console.log(itemList.firstChild);
+
+// firstElementChild; more useful than firstChild
+console.log(itemList.firstElementChild);
+itemList.firstElementChild.textContent = 'Hello 1';
+
+// nextSibling
+console.log(itemList.nextSibling);
+
+// nextElementSibling
+console.log(itemList.nextElementSibling);
+
+// previousSibling
+console.log(itemList.previousSibling);
+
+// createElement
+let newDiv = document.createElement('div');
+newDiv.className = 'hello';
+newDiv.id = "hello1";
+newDiv.setAttribute('title', 'Hello Div');
+
+let newDivText = document.createTextNode('Hello World');
+newDiv.appendChild(newDivText);
+
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+
+console.log(newDiv);
+
+newDiv.style.fontSize = '30px';
+
+container.insertBefore(newDiv, h1);
+
+let button = document.getElementById('button').addEventListener
+  ('click', buttonClick);
+
+function buttonClick(e) {
+  console.log('Button clicked');
+  // document.getElementById('header-title'.textContent = 'Changed');
+  console.log(e);  // logs 'MouseEvent...'
+  console.log(e.target);  // logs '<button class="btn btn-dark btn-block"...'
+  console.log(e.target.className);
+  let output = document.getElementById('output');
+  output.innerHTML = '<h3>'+e.target.id+'</h3>';
+}
+
+function runEvent(e) {
+  console.log('EVENT TYPE: '+e.type);
 }
